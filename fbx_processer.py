@@ -8,13 +8,18 @@ parser = argparse.ArgumentParser(description='Cook FBX files and render to MP4 u
 parser.add_argument('--hip', default = os.path.join(dir_path, 'houdini_files', 'autosplatscene_v01.hipnc'), type=str, help='Path to the Houdini .hip file')
 parser.add_argument('--files', type=str, help='Path to the directory containing the FBX files')
 parser.add_argument('--render', default = '$HIP/renders', type=str, help='Path to the directory where the rendered MP4 files will be saved')
+parser.add_argument('--splat', type=str, help='Gaussian splat file')
 
 args = parser.parse_args()
 hip_file = args.hip
 fbx_files = args.files
 render_path = args.render
+splat_file = args.splat
 
 hou.hipFile.load(hip_file)
+
+splatsop = hou.node('/obj/render/splat/sopnet/create/file3')
+splatsop.parm('file').set(splat_file)
 
 filetop = hou.node('/obj/topnet1/filepattern1')
 filetop.parm('pattern').set(fbx_files + '/*.fbx')
