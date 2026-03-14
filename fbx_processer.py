@@ -20,7 +20,7 @@ filetop = hou.node('/obj/topnet1/filepattern1')
 filetop.parm('pattern').set(fbx_files + '/*.fbx')
 
 encodetop = hou.node('/obj/topnet1/ffmpegencodevideo1')
-encodetop.parm('outputfilepath').set(render_path + '/$HIPNAME.$OS.`@pdg_index`.mp4')
+encodetop.parm('outputfilepath').set(render_path + '/`@filename`.mp4')
 
 encodetop.dirtyAllWorkItems(True)
 encodetop.cookWorkItems(block=True)
