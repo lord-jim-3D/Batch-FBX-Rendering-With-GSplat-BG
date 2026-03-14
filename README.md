@@ -3,6 +3,10 @@ It was also an excuse to look at the new gaussian splat compatibility in Houdini
 
 To run it you can open up the houdini terminal and then run the python script through hython.
 
+v01 uses gaussian splats and comps them in with the fbx. However this requires some custom positioning of the shadow catcher and scene set up, designed to function with batches of fbxs.
+
+v02 uses point clouds, not splats, therefore has no comp steps and is meant to be used with batches of plys and fbxs.
+
 For the file to work you either need to download the guassian splat I made [here](https://lumalabs.ai/capture/ebdb74a9-8876-4559-9294-2f03e81e55b3) or modify the scene to use your own.
 
 If you are going to modify the scene, do so in the lop net. You can basically do whatever you want, just make sure the shadow catcher is functioning correctly before sending it.
