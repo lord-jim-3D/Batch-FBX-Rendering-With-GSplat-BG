@@ -1,18 +1,9 @@
 import hou
 import argparse
 import os
-import signal
-import sys
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-def signal_handler(sig, frame):
-    print('\nCancellation requested. Stopping work items...')
-    try:
-        encodetop.cancelWorkItems()
-    except:
-        pass
-    sys.exit(0)
 
 # Get required
 parser = argparse.ArgumentParser(description='Cook FBX files and render to MP4 using Houdini.')
@@ -41,10 +32,6 @@ filetop.parm('pattern').set(fbx_files + '/*.fbx')
 encodetop = hou.node('/obj/topnet1/ffmpegencodevideo1')
 encodetop.parm('outputfilepath').set(render_path + '/' + '`@splatname`_`@filename`.mp4')
 
-# Register signal handler for Ctrl+C
-signal.signal(signal.SIGINT, signal_handler)
-
-print("Press Ctrl+C to cancel the process.")
 print("Topnet is running.")
 
 #Run the top net
